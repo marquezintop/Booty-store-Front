@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom"
-import logo from "../assets/logo.png"
-import styled from "styled-components"
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
+import styled from "styled-components";
 
 export default function Header() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <HeaderStyled>
-            <img src={logo} alt="logo"/>
+            <img src={logo} alt="logo" />
             <div>
                 <button onClick={() => navigate("/")}>Home</button>
                 <button onClick={() => navigate("/about-us")}>About Us</button>
@@ -47,6 +47,7 @@ div {
         color: #FFFFFF;
         border: none;
         background-color: transparent;
+        cursor: pointer;
     }
 
     button::after {
@@ -80,10 +81,11 @@ div {
   margin-left: 40px;
   margin-right: 50px;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .sign-up:hover {
   background-color: #FFFFFF;
   color: #E4251B;
 }
-`
+`;

@@ -1,31 +1,31 @@
 import styled from "styled-components";
 import Header from "../components/Header";
-import lovers from "../assets/lovers.png"
+import lovers from "../assets/lovers.png";
 
 export default function HomePage() {
     return (
         <>
-        <Header></Header>
-        <StyledHome>
-            <StyledText>
-                <h1>Making and arranging dates just for you since 2023.</h1>
-                <p>Meet and choose your future dates to create an unforgettable experience.</p>
-            </StyledText>
-            <img src={lovers} alt="lovers"></img>
-            <StyledHomeGray>
-                <h1>Why use this site?</h1>
-                <p>
-                    The Booty Shop is the ideal choice for consumers who are seeking to find their perfect 
-                    romantic match. With a wide range of options and a user-friendly interface, the Booty Shop 
-                    offers an unparalleled online dating experience. Additionally, the Booty Store provides a 
-                    safe and secure platform for users to interact one another, you can even choice your 
-                    partner’s costume for the date. The Booty Shop is the perfect destination for anyone 
-                    looking to find their perfect match.
-                </p>
-            </StyledHomeGray>
-        </StyledHome>
+            <Header></Header>
+            <StyledHome>
+                <StyledText>
+                    <h1>Making and arranging dates just for you since 2023.</h1>
+                    <p>Meet and choose your future dates to create an unforgettable experience.</p>
+                </StyledText>
+                <img src={lovers} alt="lovers"></img>
+                <StyledHomeGray>
+                    <h1>Why use this site?</h1>
+                    <p>
+                        The Booty Shop is the ideal choice for consumers who are seeking to find their perfect
+                        romantic match. With a wide range of options and a user-friendly interface, the Booty Shop
+                        offers an unparalleled online dating experience. Additionally, the Booty Store provides a
+                        safe and secure platform for users to interact one another, you can even choose your
+                        partner’s costume for the date. The Booty Shop is the perfect destination for anyone
+                        looking to find their perfect match.
+                    </p>
+                </StyledHomeGray>
+            </StyledHome>
         </>
-    )
+    );
 }
 
 const StyledHome = styled.div`
@@ -42,7 +42,7 @@ const StyledHome = styled.div`
         left: 160px;
         z-index: 1;
     }
-`
+`;
 
 const StyledHomeGray = styled.div`
     position: absolute;
@@ -69,7 +69,7 @@ const StyledHomeGray = styled.div`
         font-size: 20px;
         margin-top: 20px;
     }
-`
+`;
 
 const StyledText = styled.div`
     width: 585px;
@@ -91,4 +91,4 @@ const StyledText = styled.div`
         font-size: 20px;
         margin-top: -210px;
     }
-`
+`;
