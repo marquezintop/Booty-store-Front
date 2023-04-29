@@ -1,19 +1,23 @@
-import { useNavigate } from "react-router-dom"
-import logo from "../assets/logo.png"
-import styled from "styled-components"
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
+import styled from "styled-components";
+import { useContext } from "react";
+import UserContext from "../contexts/UserContexts";
 
 export default function Header() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { user } = useContext(UserContext)
 
     return (
         <HeaderStyled>
-            <img src={logo} alt="logo"/>
+            <img src={logo} alt="logo" />
             <div>
                 <button onClick={() => navigate("/")}>Home</button>
                 <button onClick={() => navigate("/about-us")}>About Us</button>
                 <button onClick={() => navigate("/partners")}>Partners</button>
             </div>
-            <button className="sign-up">Sign-up now!</button>
+            {(!user) ? <button className="sign-up">Sign-up now!</button> :
+                <div>Make yourself home <span>{user.name}</span></div>}
         </HeaderStyled>
     )
 }
@@ -47,6 +51,7 @@ div {
         color: #FFFFFF;
         border: none;
         background-color: transparent;
+        cursor: pointer;
     }
 
     button::after {
@@ -80,10 +85,24 @@ div {
   margin-left: 40px;
   margin-right: 50px;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .sign-up:hover {
   background-color: #FFFFFF;
   color: #E4251B;
 }
-`
+    div {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        color: #FFFFFF;
+        margin-left: 40px;
+
+            span {
+                margin: 0px;
+                color: lightgray;
+            }
+    }
+`;
