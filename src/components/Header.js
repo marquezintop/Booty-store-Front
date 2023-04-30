@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom"
 import meteorLogo from "../assets/meteor-logo.png"
 import styled from "styled-components"
+import { useContext } from "react";
+import UserContext from "../Contexts/UserContexts";
+
 
 export default function Header() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { user } = useContext(UserContext)
 
     return (
         <HeaderStyled>
@@ -14,7 +18,8 @@ export default function Header() {
                 <button onClick={() => navigate("/about-us")}>About Us</button>
                 <button onClick={() => navigate("/meteors")}>Meteors</button>
             </div>
-            <button className="sign-up" onClick={() => navigate("/sign-in")}>Sign-in</button>
+            {(user !== {}) ? <button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button> :
+                <div className="username">Make yourself home <span>{user.name}</span></div>}
         </HeaderStyled>
     )
 }
@@ -57,6 +62,7 @@ div {
         color: #FFFFFF;
         border: none;
         background-color: transparent;
+        cursor: pointer;
     }
 
     button::after {
@@ -77,7 +83,7 @@ div {
         transform-origin: bottom left;
     }
 }
-    .sign-up {
+    .sign-in {
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 500;
@@ -92,8 +98,21 @@ div {
         transition: all 0.3s ease-in-out;
     }
 
-    .sign-up:hover {
+    .sign-in:hover {
         background-color: #FFFFFF;
         color: #1D1F2D;
-    }   
-`
+    }
+    .username {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        color: #FFFFFF;
+        margin-left: 40px;
+
+            span {
+                margin: 0px;
+                color: lightgray;
+            }
+    }
+`;

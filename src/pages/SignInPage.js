@@ -1,33 +1,35 @@
-import styled from "styled-components"
-import meteorLogo from "../assets/meteor-logo.png"
+import styled from "styled-components";
+import SignInForm from "../components/Forms/SignInForm";
 import arrowIcon from "../assets/arrow-icon.png"
-import SignUpForm from "../components/Forms/SignUpForm"
-import { useNavigate } from "react-router-dom"
+import meteorLogo from "../assets/meteor-logo.png"
+import { useNavigate } from "react-router-dom";
 
-export default function SignUpPage() {
+export default function SignInPage() {
     const navigate = useNavigate()
 
     return (
-        <StyledSignUp>
+        <>
+        <StyledSignIn>
             <StyledHeaderSignUp>
                 <img className="meteor-logo" src={meteorLogo} alt="meteorLogo"/>
-                <span>Already have an account?</span>
-                <button onClick={() => navigate("/sign-in")}>Sign In
+                <span>Doesn't have an account?</span>
+                <button onClick={() => navigate("/sign-up")}>Sign Up Now!
                     <img className="arrowIcon" src={arrowIcon} alt="arrowIcon"/>
                 </button>
             </StyledHeaderSignUp>
-            <SignUpForm/>
-        </StyledSignUp>
-    )
+            <SignInForm />
+        </StyledSignIn>
+        </>
+    );
 }
 
-const StyledSignUp = styled.div`
+const StyledSignIn = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: #1D1F2D;
     display: flex;
     flex-direction: column;
-`
+`;
 
 const StyledHeaderSignUp = styled.div`
     display: flex;
@@ -64,6 +66,4 @@ const StyledHeaderSignUp = styled.div`
     button:hover{
         filter: brightness(95%);
         cursor: pointer;
-}`
-
-
+}`;

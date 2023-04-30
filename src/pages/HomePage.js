@@ -5,7 +5,7 @@ import meteor from "../assets/meteor.png"
 export default function HomePage() {
     return (
         <>
-        <Header></Header>
+        <Header/>
         <StyledHome>
             <StyledText>
                 <h1>Selling meteors at your fingertips since 2023</h1>
@@ -26,7 +26,7 @@ export default function HomePage() {
             </StyledHomeGray>
         </StyledHome>
         </>
-    )
+    );
 }
 
 const StyledHome = styled.div`
@@ -44,7 +44,7 @@ const StyledHome = styled.div`
         left: 90px;
         z-index: 1;
     }
-`
+`;
 
 const StyledHomeGray = styled.div`
     max-width:100%;
@@ -72,7 +72,7 @@ const StyledHomeGray = styled.div`
         font-size: 20px;
         margin-top: 30px;
     }
-`
+`;
 
 const StyledText = styled.div`
     width: 585px;
@@ -94,4 +94,4 @@ const StyledText = styled.div`
         font-size: 20px;
         margin-top: -190px;
     }
-`
+`;

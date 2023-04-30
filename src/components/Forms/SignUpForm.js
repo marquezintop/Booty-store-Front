@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import StyledForm from "./StyledForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../../Contexts/UserContext";
+import UserContext from "../../Contexts/UserContexts";
 
 
 export default function SignUpForm() {

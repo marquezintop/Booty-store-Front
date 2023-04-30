@@ -2,7 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
 import { useState } from 'react';
-import UserContext from './Contexts/UserContext';
+import UserContext from './Contexts/UserContexts';
+import SignInPage from './pages/SignInPage';
+
 
 function App() {
 
@@ -11,13 +13,14 @@ function App() {
 
   return (
     <BrowserRouter>
-    <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
         </Routes>
-        </UserContext.Provider>
-      </BrowserRouter>
+      </UserContext.Provider>
+    </BrowserRouter>
   );
 }
 
