@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom"
+import meteorLogo from "../assets/meteor-logo.png"
+import styled from "styled-components"
 import { useContext } from "react";
-import UserContext from "../contexts/UserContexts";
+import UserContext from "../Contexts/UserContexts";
+
 
 export default function Header() {
     const navigate = useNavigate();
@@ -10,30 +11,40 @@ export default function Header() {
 
     return (
         <HeaderStyled>
-            <img src={logo} alt="logo" />
+            <img src={meteorLogo} alt="meteorLogo"/>
+            <h1>Meteor Store</h1>
             <div>
                 <button onClick={() => navigate("/")}>Home</button>
                 <button onClick={() => navigate("/about-us")}>About Us</button>
-                <button onClick={() => navigate("/partners")}>Partners</button>
+                <button onClick={() => navigate("/meteors")}>Meteors</button>
             </div>
-            {(!user) ? <button className="sign-up">Sign-up now!</button> :
-                <div>Make yourself home <span>{user.name}</span></div>}
+            {(user !== {}) ? <button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button> :
+                <div className="username">Make yourself home <span>{user.name}</span></div>}
         </HeaderStyled>
     )
 }
 
 const HeaderStyled = styled.div`
 width: 100vw;
+max-width:100%;
 height: 140px; 
-background-color: #E4251B;
+background-color: #1D1F2D;
 position: fixed;
 top: 0;
 left: 0;
 display: flex;
 align-items: center;
 z-index: 2;
+h1 {
+    width: 100px;
+    color: #FFFFFF;
+    font-size: 30px;
+    font-family: 'Poppins';
+    font-weight: 500;
+
+}
 img {
-    width: 224px;
+    width: 130px;
     margin-left: 70px;
 }
 div {
@@ -72,27 +83,26 @@ div {
         transform-origin: bottom left;
     }
 }
-.sign-up {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  color: #FFFFFF;
-  width: 230px;
-  height: 68px;
-  background-color: #E4251B;
-  border: #FFFFFF 2px solid;
-  margin-left: 40px;
-  margin-right: 50px;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
+    .sign-in {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        color: #FFFFFF;
+        width: 230px;
+        height: 68px;
+        background-color: #1D1F2D;
+        border: #FFFFFF 2px solid;
+        margin-left: 40px;
+        margin-right: 50px;
+        transition: all 0.3s ease-in-out;
+    }
 
-.sign-up:hover {
-  background-color: #FFFFFF;
-  color: #E4251B;
-}
-    div {
+    .sign-in:hover {
+        background-color: #FFFFFF;
+        color: #1D1F2D;
+    }
+    .username {
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 400;

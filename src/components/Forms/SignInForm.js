@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import UserContext from "../contexts/UserContexts"
+import StyledForm from "./StyledForm";
+import UserContext from "../../Contexts/UserContexts";
 
 
 export default function SignInForm() {
@@ -23,54 +23,30 @@ export default function SignInForm() {
             console.log(name, token);
             setUser({ name, token });
             localStorage.setItem("user", JSON.stringify({ name, token }));
-            //navigate("/");
+            navigate("/");
         } catch (err) {
             console.log(err.response.data);
         }
     }
 
     return (
-        <FormContainer>
+        <StyledForm>
             <form onSubmit={signIn}>
+                <p>Email:</p>
                 <input type="email"
                     placeholder="Enter your e-mail..."
                     required
                     value={email}
                     onChange={e => setEmail(e.target.value)} />
-
+                <p>Password:</p>
                 <input type="password"
                     placeholder="Enter your password..."
                     required
                     value={password}
                     onChange={e => setPassword(e.target.value)} />
+                    <br></br>
                 <button type="submit">Sign In</button>
             </form>
-        </FormContainer>
+        </StyledForm>
     );
 }
-
-const FormContainer = styled.div`
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-
-        form {
-            width: 300px;
-            height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-                input {
-                    height: 40px;
-                    padding-left: 20px;
-                    font-size: 16px;
-
-                        input::placeholder {
-                            text-align: center;
-                            
-                        }
-
-                }
-        }
-`;
