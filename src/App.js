@@ -2,9 +2,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
 import { useState } from 'react';
-import UserContext from './Contexts/UserContexts';
 import SignInPage from './pages/SignInPage';
-
+import UserContext from './Contexts/UserContexts';
 
 function App() {
 
