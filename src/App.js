@@ -3,7 +3,7 @@ import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
 import { useState } from 'react';
 import SignInPage from './pages/SignInPage';
-import UserContext from './Contexts/UserContexts';
+import UserContext from './contexts/UserContexts';
 
 function App() {
 

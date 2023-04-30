@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import meteorLogo from "../assets/meteor-logo.png"
 import styled from "styled-components"
 import { useContext } from "react";
-import UserContext from "../Contexts/UserContexts";
+import UserContext from "../contexts/UserContexts";
 
 
 export default function Header() {
