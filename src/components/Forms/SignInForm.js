@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StyledForm from "./StyledForm";
-import UserContext from "../../Contexts/UserContexts";
+import UserContext from "../../contexts/UserContexts";
 
 
 export default function SignInForm() {
