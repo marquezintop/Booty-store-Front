@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import meteor from "../assets/meteor.png"
+import { useEffect } from "react";
 
 export default function HomePage() {
+
     return (
         <>
-        <Header/>
+        <Header page={"Home"}/>
         <StyledHome>
             <StyledText>
                 <h1>Selling meteors at your fingertips since 2023</h1>

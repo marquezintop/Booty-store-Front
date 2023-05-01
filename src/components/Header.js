@@ -5,7 +5,7 @@ import { useContext } from "react";
 import UserContext from "../contexts/UserContexts";
 
 
-export default function Header() {
+export default function Header({page}) {
     const navigate = useNavigate();
     const { user } = useContext(UserContext)
 
@@ -14,9 +14,12 @@ export default function Header() {
             <img src={meteorLogo} alt="meteorLogo"/>
             <h1>Meteor Store</h1>
             <div>
-                <button onClick={() => navigate("/")}>Home</button>
-                <button onClick={() => navigate("/about-us")}>About Us</button>
-                <button onClick={() => navigate("/meteors")}>Meteors</button>
+                <button className={page==="Home" ? "disabled" : "activated"} 
+                onClick={() => navigate("/")}>Home</button>
+                <button className={page==="AboutUs" ? "disabled" : "activated"} 
+                onClick={() => navigate("/about-us")}>About Us</button>
+                <button className={page==="Meteors" ? "disabled" : "activated"} 
+                onClick={() => navigate("/meteors")}>Meteors</button>
             </div>
             {(user !== {}) ? <button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button> :
                 <div className="username">Make yourself home <span>{user.name}</span></div>}
@@ -65,7 +68,7 @@ div {
         cursor: pointer;
     }
 
-    button::after {
+    .activated::after {
         content: '';
         position: absolute;
         width: 100%;
@@ -78,7 +81,7 @@ div {
         transition: transform 0.25s ease-out;
     }
 
-    button:hover::after {
+    .activated:hover::after {
         transform: scaleX(1);
         transform-origin: bottom left;
     }
@@ -115,4 +118,10 @@ div {
                 color: lightgray;
             }
     }
+    .disabled {
+        text-decoration: underline;
+        cursor: default;
+        font-weight: 700;
+    }
 `;
+
