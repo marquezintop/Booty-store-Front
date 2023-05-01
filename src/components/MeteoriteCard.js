@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+
 export default function MeteoriteCard({ meteorite }) {
-    const { name, description, picture, price } = meteorite
+    const navigate = useNavigate();
+    const { name, description, picture, price, _id: id } = meteorite;
+
+    function goToMeteorite(id) {
+        navigate(`/meteors/${id}`);
+    }
+
     return (
-        <StyledMeteorCard>
+        <StyledMeteorCard onClick={() => goToMeteorite(id)}>
             <figure>
                 <img src={picture} alt={name} />
             </figure>

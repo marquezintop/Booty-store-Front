@@ -9,16 +9,16 @@ export default function SignInPage() {
 
     return (
         <>
-        <StyledSignIn>
-            <StyledHeaderSignUp>
-                <img className="meteor-logo" src={meteorLogo} alt="meteorLogo"/>
-                <span>Doesn't have an account?</span>
-                <button onClick={() => navigate("/sign-up")}>Sign Up Now!
-                    <img className="arrowIcon" src={arrowIcon} alt="arrowIcon"/>
-                </button>
-            </StyledHeaderSignUp>
-            <SignInForm />
-        </StyledSignIn>
+            <StyledSignIn>
+                <StyledHeaderSignUp>
+                    <img className="meteor-logo" src={meteorLogo} alt="meteorLogo" />
+                    <span>Doesn't have an account?</span>
+                    <button onClick={() => navigate("/sign-up")}>Sign Up Now!
+                        <img className="arrowIcon" src={arrowIcon} alt="arrowIcon" />
+                    </button>
+                </StyledHeaderSignUp>
+                <SignInForm />
+            </StyledSignIn>
         </>
     );
 }
