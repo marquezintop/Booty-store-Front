@@ -5,24 +5,25 @@ import { useContext } from "react";
 import UserContext from "../contexts/UserContexts";
 
 
-export default function Header({page}) {
+export default function Header({ page }) {
     const navigate = useNavigate();
     const { user } = useContext(UserContext)
+    console.log(user);
 
     return (
         <HeaderStyled>
-            <img src={meteorLogo} alt="meteorLogo"/>
+            <img src={meteorLogo} alt="meteorLogo" />
             <h1>Meteor Store</h1>
             <div>
-                <button className={page==="Home" ? "disabled" : "activated"} 
-                onClick={() => navigate("/")}>Home</button>
-                <button className={page==="AboutUs" ? "disabled" : "activated"} 
-                onClick={() => navigate("/about-us")}>About Us</button>
-                <button className={page==="Meteors" ? "disabled" : "activated"} 
-                onClick={() => navigate("/meteors")}>Meteors</button>
+                <button className={page === "Home" ? "disabled" : "activated"}
+                    onClick={() => navigate("/")}>Home</button>
+                <button className={page === "AboutUs" ? "disabled" : "activated"}
+                    onClick={() => navigate("/about-us")}>About Us</button>
+                <button className={page === "Meteors" ? "disabled" : "activated"}
+                    onClick={() => navigate("/meteors")}>Meteors</button>
             </div>
-            {(user !== {}) ? <button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button> :
-                <div className="username">Make yourself home <span>{user.name}</span></div>}
+            {(user === {}) ? (<button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button>) :
+                (<div className="username">Make yourself home <span>{user.name}</span></div>)}
         </HeaderStyled>
     )
 }
