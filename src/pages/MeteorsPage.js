@@ -4,15 +4,22 @@ import MeteoriteCard from "../components/MeteoriteCard";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../contexts/UserContexts";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 export default function MeteorsPage() {
+    const navigate = useNavigate();
     const { user } = useContext(UserContext);
     const config = { headers: { Authorization: `Bearer ${user.token}` } };
     const [meteoritesList, setMeteoritesList] = useState([]);
 
     useEffect(() => {
-        getMeteoritesList();
+        if (!user.token) {
+            alert("No permission to continue, you have to sign in");
+            navigate("/");
+        } else {
+            getMeteoritesList();
+        }
     }, []);
 
 
