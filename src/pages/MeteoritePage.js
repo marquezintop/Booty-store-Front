@@ -21,7 +21,6 @@ export default function MeteoritePage() {
         }
     }, []);
 
-
     async function getMeteorite() {
         try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/get-meteorites/${idMeteorite}`, config);
@@ -31,6 +30,23 @@ export default function MeteoritePage() {
             console.log(error.response.data);
         }
     };
+
+    async function addToCart() {
+        const body = {
+            name: meteorite.name,
+            picture: meteorite.picture,
+            price: meteorite.price,
+            id: idMeteorite
+        }
+
+        try {
+            await axios.post(`${process.env.REACT_APP_API_URL}/cart`, body, config);
+
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    }
+
 
     return (
         <>
@@ -45,7 +61,7 @@ export default function MeteoritePage() {
                     <h3>Fall date: {meteorite.date}</h3>
                     <p>{meteorite.fullDescription}</p>
                     <h4>Price: ${meteorite.price}</h4>
-                    <button>
+                    <button onClick={addToCart}>
                         Add to cart
                     </button>
                 </div>
