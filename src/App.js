@@ -4,6 +4,8 @@ import SignUpPage from './pages/SignUpPage';
 import { useState } from 'react';
 import SignInPage from './pages/SignInPage';
 import UserContext from './contexts/UserContexts';
+import MeteorsPage from './pages/MeteorsPage';
+
 
 function App() {
 
@@ -17,6 +19,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/meteors" element={<MeteorsPage />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
