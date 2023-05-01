@@ -8,7 +8,6 @@ import UserContext from "../contexts/UserContexts";
 export default function Header({ page }) {
     const navigate = useNavigate();
     const { user } = useContext(UserContext)
-    console.log(user);
 
     return (
         <HeaderStyled>
