@@ -45,7 +45,9 @@ export default function MeteoritePage() {
                     <h3>Fall date: {meteorite.date}</h3>
                     <p>{meteorite.fullDescription}</p>
                     <h4>Price: ${meteorite.price}</h4>
-                    <button>Add to cart</button>
+                    <button>
+                        Add to cart
+                    </button>
                 </div>
             </StyledMeteoriteContainer>
         </>
