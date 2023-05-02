@@ -4,8 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../contexts/UserContexts";
 import axios from "axios";
+import CartScreen from "../components/CartScreen";
 
-export default function MeteoritePage() {
+export default function MeteoritePage({visible, setVisible, cart, setCart}) {
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
     const config = { headers: { Authorization: `Bearer ${user.token}` } };
@@ -40,17 +41,26 @@ export default function MeteoritePage() {
         }
 
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/cart`, body, config);
-
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, body, config);
+            alert(res.data)
         } catch (error) {
-            console.log(error.response.data);
+            alert(error.response.data);
         }
     }
 
 
     return (
         <>
-            <Header />
+        <CartScreen 
+        visible={visible}
+        cart={cart}
+        setVisible={setVisible}
+        setCart={setCart}
+        />
+        <Header page={"Meteors"}
+        setVisible={setVisible}
+        setCart={setCart}
+        />
             <StyledMeteoriteContainer>
                 <figure>
                     <img src={meteorite.picture} alt={meteorite.name} />

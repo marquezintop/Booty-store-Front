@@ -20,6 +20,7 @@ export default function SignUpForm() {
     async function submitForm(e) {
         e.preventDefault();
         try {
+            console.log(form)
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/sign-up`, form)
             const { name, token } = response.data;
             setUser({ name, token });
