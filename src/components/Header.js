@@ -1,13 +1,37 @@
 import { useNavigate } from "react-router-dom"
 import meteorLogo from "../assets/meteor-logo.png"
+import cartIcon from "../assets/cart-icon.png"
 import styled from "styled-components"
 import { useContext } from "react";
 import UserContext from "../contexts/UserContexts";
+import axios from "axios";
 
-
-export default function Header({ page }) {
+export default function Header( {page, setVisible, setCart} ) {
     const navigate = useNavigate();
     const { user } = useContext(UserContext)
+    const headers = { headers: { Authorization: `Bearer ${user.token}` } };
+
+    function handleCart() {
+        if (!user.token) {
+            alert("No permission to continue, you have to sign in");
+            navigate("/");
+        } else {
+            setVisible(true)
+            getCartList();
+        }
+    }
+
+
+
+    async function getCartList() {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/get-cart`,headers, user.userId);
+            console.log(res.data);
+            setCart(res.data)
+        } catch (error) {
+            console.log(error.response.data);
+        }
+      };
 
     return (
         <HeaderStyled>
@@ -22,7 +46,10 @@ export default function Header({ page }) {
                     onClick={() => navigate("/meteors")}>Meteors</button>
             </div>
             {(user === {}) ? (<button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button>) :
-                (<div className="username">Make yourself home <span>{user.name}</span></div>)}
+                (<div className="username">Make yourself home <span>{user.name}</span>
+                <img onClick={handleCart} src={cartIcon} alt="cartIcon"></img>
+                </div>)
+                }
         </HeaderStyled>
     )
 }
@@ -51,7 +78,7 @@ img {
     margin-left: 70px;
 }
 div {
-    margin-left: 350px;
+    margin-left: 150px;
     display: flex;
     justify-content: space-between;
     width: 500px;
@@ -106,16 +133,24 @@ div {
         color: #1D1F2D;
     }
     .username {
+        width: 400px;
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
         color: #FFFFFF;
         margin-left: 40px;
-
+        align-items: center;
             span {
                 margin: 0px;
                 color: lightgray;
+            }
+            img {
+                width: 45px;
+                margin-left: -10px;
+            }
+            img:hover{
+                filter: brightness(75%);
             }
     }
     .disabled {
@@ -124,4 +159,3 @@ div {
         font-weight: 700;
     }
 `;
-

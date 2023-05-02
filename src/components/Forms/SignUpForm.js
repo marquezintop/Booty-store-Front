@@ -36,6 +36,7 @@ export default function SignUpForm() {
                 <p>Name: *</p>
                 <input placeholder="Name"
                 required
+                maxLength={10}
                 name="name"
                 value={form.name}
                 onChange={handleForm}

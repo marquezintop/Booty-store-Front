@@ -1,31 +1,41 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import meteor from "../assets/meteor.png"
+import CartScreen from "../components/CartScreen";
 
-export default function HomePage() {
+
+export default function HomePage({ visible, setVisible, cart, setCart }) {
 
     return (
         <>
-            <Header page={"Home"} />
-            <StyledHome>
-                <StyledText>
-                    <h1>Selling meteors at your fingertips since 2023</h1>
-                    <p>Get to know our most varied types of meteors and buy the one that most sparkles your eyes.</p>
-                </StyledText>
-                <img src={meteor} alt="meteor"></img>
-                <StyledHomeGray>
-                    <h1>Why buy from our store?</h1>
-                    <p>
-                        If you're in the market for a meteor, the Meteor Store is the place to go. Not only do we offer
-                        a wide selection of meteors to choose from, but we also provide a seamless online shopping
-                        experience. Our meteors are sourced from reputable suppliers, ensuring that you receive a
-                        high-quality product that will meet your expectations. Additionally, we offer competitive
-                        pricing and fast shipping, so you can have your meteor in your hands in no time. With our
-                        commitment to customer satisfaction, you can trust that your purchase from the Meteor Store will
-                        be a great investment for years to come.
-                    </p>
-                </StyledHomeGray>
-            </StyledHome>
+        <CartScreen 
+        visible={visible}
+        cart={cart}
+        setVisible={setVisible}
+        />
+        <Header page={"Home"}
+        setVisible={setVisible}
+        setCart={setCart}
+        />
+        <StyledHome>
+            <StyledText>
+                <h1>Selling meteors at your fingertips since 2023</h1>
+                <p>Get to know our most varied types of meteors and buy the one that most sparkles your eyes.</p>
+            </StyledText>
+            <img src={meteor} alt="meteor"></img>
+            <StyledHomeGray>
+                <h1>Why buy from our store?</h1>
+                <p>
+                If you're in the market for a meteor, the Meteor Store is the place to go. Not only do we offer 
+                a wide selection of meteors to choose from, but we also provide a seamless online shopping 
+                experience. Our meteors are sourced from reputable suppliers, ensuring that you receive a 
+                high-quality product that will meet your expectations. Additionally, we offer competitive 
+                pricing and fast shipping, so you can have your meteor in your hands in no time. With our 
+                commitment to customer satisfaction, you can trust that your purchase from the Meteor Store will 
+                be a great investment for years to come.
+                </p>
+            </StyledHomeGray>
+        </StyledHome>
         </>
     );
 }
