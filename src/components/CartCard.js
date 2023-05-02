@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
-export default function CartCard({picture, name, price}) {
+export default function CartCard({picture, name, price, deleteMeteorite}) {
+
   return (
     <SyledCardCart>
       <img src={picture}
@@ -8,7 +9,7 @@ export default function CartCard({picture, name, price}) {
       ></img>
       <h2>{name}</h2>
       <p>Price: {price}</p>
-      <button>Delete product</button>
+      <button onClick={() => deleteMeteorite(name)}>Delete product</button>
     </SyledCardCart>
   )
 }
@@ -18,6 +19,7 @@ const SyledCardCart = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    align-self: center;
     img {
       max-width: 250px;
       margin-top: 30px;

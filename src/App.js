@@ -10,7 +10,7 @@ import MeteoritePage from './pages/MeteoritePage';
 function App() {
 
   const lsUser = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState(lsUser !== null ? lsUser : {});
+  const [user, setUser] = useState(lsUser !== null ? lsUser : "");
   const [visible, setVisible] = useState(false);
   const [cart, setCart] = useState([])
 
@@ -23,8 +23,10 @@ function App() {
           cart={cart} setCart={setCart}/>} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="/meteors" element={<MeteorsPage />} />
-          <Route path="/meteors/:idMeteorite" element={<MeteoritePage />} />
+          <Route path="/meteors" element={<MeteorsPage visible={visible} setVisible={setVisible}
+          cart={cart} setCart={setCart} />} />
+          <Route path="/meteors/:idMeteorite" element={<MeteoritePage visible={visible} setVisible={setVisible}
+          cart={cart} setCart={setCart} />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

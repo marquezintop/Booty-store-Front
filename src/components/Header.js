@@ -25,8 +25,7 @@ export default function Header( {page, setVisible, setCart} ) {
 
     async function getCartList() {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/get-cart`,headers, user.userId);
-            console.log(res.data);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/get-cart`, headers);
             setCart(res.data)
         } catch (error) {
             console.log(error.response.data);
@@ -45,7 +44,7 @@ export default function Header( {page, setVisible, setCart} ) {
                 <button className={page === "Meteors" ? "disabled" : "activated"}
                     onClick={() => navigate("/meteors")}>Meteors</button>
             </div>
-            {(user === {}) ? (<button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button>) :
+            {(!user.token) ? (<button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button>) :
                 (<div className="username">Make yourself home <span>{user.name}</span>
                 <img onClick={handleCart} src={cartIcon} alt="cartIcon"></img>
                 </div>)

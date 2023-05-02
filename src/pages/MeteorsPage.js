@@ -5,9 +5,10 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../contexts/UserContexts";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CartScreen from "../components/CartScreen";
 
 
-export default function MeteorsPage() {
+export default function MeteorsPage({visible, setVisible, cart, setCart}) {
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
     const config = { headers: { Authorization: `Bearer ${user.token}` } };
@@ -36,7 +37,16 @@ export default function MeteorsPage() {
 
     return (
         <>
-            <Header page={"Meteors"} />
+        <CartScreen 
+        setCart={setCart}
+        visible={visible}
+        cart={cart}
+        setVisible={setVisible}
+        />
+        <Header page={"Meteors"}
+        setVisible={setVisible}
+        setCart={setCart}
+        />
             <StyledMeteorsPage>
                 <StyledMeteorsContainer>
                     {meteoritesList.map((meteorite) => <MeteoriteCard key={meteorite._id} meteorite={meteorite} />)}

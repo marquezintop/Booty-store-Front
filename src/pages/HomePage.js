@@ -11,6 +11,7 @@ export default function HomePage({ visible, setVisible, cart, setCart }) {
         <CartScreen 
         visible={visible}
         cart={cart}
+        setCart={setCart}
         setVisible={setVisible}
         />
         <Header page={"Home"}
