@@ -6,7 +6,6 @@ import { useContext } from "react";
 import UserContext from "../contexts/UserContexts";
 import axios from "axios";
 
-
 export default function Header( {page, setVisible, setCart} ) {
     const navigate = useNavigate();
     const { user } = useContext(UserContext)
@@ -36,21 +35,21 @@ export default function Header( {page, setVisible, setCart} ) {
 
     return (
         <HeaderStyled>
-            <img src={meteorLogo} alt="meteorLogo"/>
+            <img src={meteorLogo} alt="meteorLogo" />
             <h1>Meteor Store</h1>
             <div>
-                <button className={page==="Home" ? "disabled" : "activated"} 
-                onClick={() => navigate("/")}>Home</button>
-                <button className={page==="AboutUs" ? "disabled" : "activated"} 
-                onClick={() => navigate("/about-us")}>About Us</button>
-                <button className={page==="Meteors" ? "disabled" : "activated"} 
-                onClick={() => navigate("/meteors")}>Meteors</button>
+                <button className={page === "Home" ? "disabled" : "activated"}
+                    onClick={() => navigate("/")}>Home</button>
+                <button className={page === "AboutUs" ? "disabled" : "activated"}
+                    onClick={() => navigate("/about-us")}>About Us</button>
+                <button className={page === "Meteors" ? "disabled" : "activated"}
+                    onClick={() => navigate("/meteors")}>Meteors</button>
             </div>
             {(user === {}) ? (<button className="sign-in" onClick={() => navigate("/sign-in")}>Sign-in</button>) :
                 (<div className="username">Make yourself home <span>{user.name}</span>
                 <img onClick={handleCart} src={cartIcon} alt="cartIcon"></img>
                 </div>)
-            }
+                }
         </HeaderStyled>
     )
 }
@@ -160,4 +159,3 @@ div {
         font-weight: 700;
     }
 `;
-

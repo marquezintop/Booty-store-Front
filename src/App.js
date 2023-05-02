@@ -4,7 +4,8 @@ import SignUpPage from './pages/SignUpPage';
 import { useState } from 'react';
 import SignInPage from './pages/SignInPage';
 import UserContext from './contexts/UserContexts';
-import Test from './pages/Test';
+import MeteorsPage from './pages/MeteorsPage';
+import MeteoritePage from './pages/MeteoritePage';
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
           cart={cart} setCart={setCart}/>} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/meteors" element={<MeteorsPage />} />
+          <Route path="/meteors/:idMeteorite" element={<MeteoritePage />} />
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

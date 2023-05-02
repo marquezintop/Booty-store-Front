@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import meteor from "../assets/meteor.png"
 import CartScreen from "../components/CartScreen";
 
+
 export default function HomePage({ visible, setVisible, cart, setCart }) {
 
     return (
