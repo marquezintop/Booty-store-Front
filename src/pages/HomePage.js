@@ -1,13 +1,21 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import meteor from "../assets/meteor.png"
-import { useEffect } from "react";
+import CartScreen from "../components/CartScreen";
 
-export default function HomePage() {
+export default function HomePage({ visible, setVisible, cart, setCart }) {
 
     return (
         <>
-        <Header page={"Home"}/>
+        <CartScreen 
+        visible={visible}
+        cart={cart}
+        setVisible={setVisible}
+        />
+        <Header page={"Home"}
+        setVisible={setVisible}
+        setCart={setCart}
+        />
         <StyledHome>
             <StyledText>
                 <h1>Selling meteors at your fingertips since 2023</h1>
